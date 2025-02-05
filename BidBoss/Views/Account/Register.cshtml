@@ -1,0 +1,22 @@
+﻿@model BidBoss.Models.RegisterViewModel
+
+<h2>Register</h2>
+
+<form asp-action="Register" method="post">
+    <label>Email</label>
+    <input asp-for="Email" class="form-control" />
+
+    <label>Password</label>
+    <input asp-for="Password" type="password" class="form-control" />
+
+    <label>Confirm Password</label>
+    <input asp-for="ConfirmPassword" type="password" class="form-control" />
+
+    <label>Select Role</label>
+    <select asp-for="Role" class="form-control">
+        <option value="Seller">Seller</option>
+        <option value="Buyer">Buyer</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>

@@ -1,0 +1,44 @@
+﻿@using BidBoss.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - BidBoss</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+
+                @if (User.IsInRole("Seller"))
+                {
+                    <li><a asp-controller="Seller" asp-action="MyAuctions">My Auctions</a></li>
+                    <li><a asp-controller="Seller" asp-action="CreateAuction">Create Auction</a></li>
+                }
+                else if (User.IsInRole("Buyer"))
+                {
+                    <li>@Html.ActionLink("Browse Auctions", "BrowseAuctions", "Buyer")</li>
+                    <li>@Html.ActionLink("Bidding History", "BiddingHistory", "Buyer")</li>
+                }
+            }
+            else
+            {
+                <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                <li>@Html.ActionLink("Register", "Register", "Account")</li>
+            }
+        </ul>
+    </nav>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
+</html>

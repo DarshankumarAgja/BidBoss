@@ -1,0 +1,25 @@
+﻿@model BidBoss.Models.Auction
+
+<h2>Create Auction</h2>
+
+<form asp-action="CreateAuction" method="post">
+    <label>Property Name:</label>
+    <input type="text" asp-for="ItemName" required />
+
+    <label>Description:</label>
+    <textarea asp-for="Description" required></textarea>
+
+    <label>Starting Bid Price:</label>
+    <input type="number" asp-for="ReservePrice" required />
+
+    <label>Minimum Bid Increment:</label>
+    <input type="number" asp-for="MinimumBidIncrement" required />
+
+    <label>Auction Start Date:</label>
+    <input type="datetime-local" asp-for="StartDate" required />
+
+    <label>Auction End Date:</label>
+    <input type="datetime-local" asp-for="EndDate" required />
+
+    <button type="submit">Create Auction</button>
+</form>
